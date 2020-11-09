@@ -12,7 +12,10 @@ base_url= "https://www.twitter.com" #or "https://www.twitter.com/login"
 tweetdata=[]
 
 def transform_tweet(card):
-    username     = card.find_element_by_xpath('.//span').text
+    try:
+        username     = card.find_element_by_xpath('.//span').text
+    except NoSuchElementException:
+        return
     handle       = card.find_element_by_xpath('.//span[contains(text(), "@")]').text
     link         = card.find_element_by_xpath('.//div[2]/div[1]/div/div/div[1]/a').get_attribute('href') 
     try:

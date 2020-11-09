@@ -7,8 +7,12 @@ from selenium import webdriver
 from selenium.common.exceptions import *
 from selenium.webdriver.common.keys import Keys
 import pandas
+import os
 
-base_url= "https://www.twitter.com" #or "https://www.twitter.com/login"
+#DRIVER_PATH = os.path.abspath('..'+'/chromedriver'
+#driver = webdriver.Chrome(DRIVER_PATH)
+
+base_url= "https://www.twitter.com/login" #or "https://www.twitter.com/login"
 tweetdata=[]
 
 def transform_tweet(card):
@@ -16,8 +20,14 @@ def transform_tweet(card):
         username     = card.find_element_by_xpath('.//span').text
     except NoSuchElementException:
         return
-    handle       = card.find_element_by_xpath('.//span[contains(text(), "@")]').text
-    link         = card.find_element_by_xpath('.//div[2]/div[1]/div/div/div[1]/a').get_attribute('href') 
+    try:
+        handle       = card.find_element_by_xpath('.//span[contains(text(), "@")]').text
+    except NoSuchElementException:
+        return
+    try:
+        link         = card.find_element_by_xpath('.//div[2]/div[1]/div/div/div[1]/a').get_attribute('href')
+    except NoSuchElementException:
+        return
     try:
         date     = card.find_element_by_xpath('.//time').get_attribute('datetime')
     except NoSuchElementException:
@@ -35,8 +45,8 @@ def extract(email, password):
     driver= webdriver.Chrome("chromedriver.exe")
     driver.get(base_url)
     driver.implicitly_wait(5)
-    driver.find_element_by_xpath('//*[@id="react-root"]/div/div/div/main/div/div/div[1]/div[1]/div/a[2]').click()
-    driver.implicitly_wait(5)
+    #driver.find_element_by_xpath('//*[@id="react-root"]/div/div/div/main/div/div/div[1]/div[1]/div/a[2]').click()
+    #driver.implicitly_wait(5)
     try:
         driver.find_element_by_xpath('//input[@name="session[username_or_email]"]').send_keys(email)# alt: //*[@id="react-root"]/div/div/div[2]/main/div/div/div[1]/form/div/div[1]/label/div/div[2]/div/input').send_keys(email)
     except ElementNotInteractableException:

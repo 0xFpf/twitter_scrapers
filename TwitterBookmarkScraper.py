@@ -94,7 +94,7 @@ def extract(email, password):
     # close the web driver
     driver.close()
     datafile = pandas.DataFrame(tweetdata)
-    datafile.to_csv('tweets.csv')
+    datafile.to_csv('BookmarkedTweets.csv')
 
     messagebox.showinfo("Confirmation Message","Finished, check the program folder for the csv file")
     startScript.config(state='normal')

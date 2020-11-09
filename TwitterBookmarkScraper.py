@@ -9,7 +9,7 @@ from selenium.webdriver.common.keys import Keys
 import pandas
 import os
 
-#DRIVER_PATH = os.path.abspath('..'+'/chromedriver'
+#DRIVER_PATH = os.path.abspath('..')+'/chromedriver'
 #driver = webdriver.Chrome(DRIVER_PATH)
 
 base_url= "https://www.twitter.com/login" #or "https://www.twitter.com/login"

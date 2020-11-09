@@ -9,23 +9,25 @@ from selenium.webdriver.common.keys import Keys
 import pandas
 import os
 
+#add these two lines for macOs, save the chromedriver in the parent of this file's folder, if the folder is on desktop put chromedriver on the desktop:
 #DRIVER_PATH = os.path.abspath('..')+'/chromedriver'
 #driver = webdriver.Chrome(DRIVER_PATH)
 
-base_url= "https://www.twitter.com/login" #or "https://www.twitter.com/login"
+base_url= "https://www.twitter.com/login"
 tweetdata=[]
 
+#gathers data within tweet
 def transform_tweet(card):
     try:
-        username     = card.find_element_by_xpath('.//span').text
+        username = card.find_element_by_xpath('.//span').text
     except NoSuchElementException:
         return
     try:
-        handle       = card.find_element_by_xpath('.//span[contains(text(), "@")]').text
+        handle   = card.find_element_by_xpath('.//span[contains(text(), "@")]').text
     except NoSuchElementException:
         return
     try:
-        link         = card.find_element_by_xpath('.//div[2]/div[1]/div/div/div[1]/a').get_attribute('href')
+        link     = card.find_element_by_xpath('.//div[2]/div[1]/div/div/div[1]/a').get_attribute('href')
     except NoSuchElementException:
         return
     try:
@@ -40,13 +42,13 @@ def transform_tweet(card):
     print(tweet[2])
     return tweet
 
-
+#main
 def extract(email, password):
     driver= webdriver.Chrome("chromedriver.exe")
     driver.get(base_url)
     driver.implicitly_wait(5)
-    #driver.find_element_by_xpath('//*[@id="react-root"]/div/div/div/main/div/div/div[1]/div[1]/div/a[2]').click()
-    #driver.implicitly_wait(5)
+    
+    #attempts login
     try:
         driver.find_element_by_xpath('//input[@name="session[username_or_email]"]').send_keys(email)# alt: //*[@id="react-root"]/div/div/div[2]/main/div/div/div[1]/form/div/div[1]/label/div/div[2]/div/input').send_keys(email)
     except ElementNotInteractableException:
@@ -72,6 +74,7 @@ def extract(email, password):
     last_position = driver.execute_script("return window.pageYOffset;")
     scrolling = True
 
+    #scrolls & loads more tweets
     while scrolling:
         page_cards = driver.find_elements_by_xpath('//div[@data-testid="tweet"]')
         for card in page_cards[-15:]:

@@ -1,8 +1,9 @@
 # twitterprojects
 
-This is a small script that pulls all your bookmarks to a csv file.
+This is a small script that pulls all your bookmarks or profile tweets to a csv file (depending on which program you run).
 
-You must put the TwitterBookmarkScraper.py file along with chromedriver.exe inside the same folder, as the driver is required for the script to work
+If on windows, you must put the .py file along with chromedriver.exe inside the same folder, as the driver is required for the script to work.
+If you're on macOs follow the instructions within the .py (at the top).
 
 
 If you're on windows you can run the .py file by:

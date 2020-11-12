@@ -2,8 +2,15 @@
 
 This is a small script that pulls all your bookmarks or profile tweets to a csv file (depending on which program you run).
 
+
+Installation instructions--
+
+
 If on windows, you must put the .py file along with chromedriver.exe inside the same folder, as the driver is required for the script to work.
-If you're on macOs follow the instructions within the .py (at the top).
+If you're on macOs, download the macOS version then put the chromedriver.exe just outside the .py's folder, and then input the path to the chromedriver once you run the application.
+
+
+Instructions to run the script--
 
 
 If you're on windows you can run the .py file by:

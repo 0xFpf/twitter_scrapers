@@ -3,6 +3,7 @@ from tkinter import filedialog, Text, simpledialog, messagebox
 import threading
 import time
 from sys import exit
+import chromedriver_autoinstaller
 from selenium import webdriver
 from selenium.common.exceptions import *
 from selenium.webdriver.common.keys import Keys
@@ -13,6 +14,7 @@ import os
 #DRIVER_PATH = os.path.abspath('..')+'/chromedriver'
 #driver = webdriver.Chrome(DRIVER_PATH)
 
+chromedriver_autoinstaller.install()
 base_url= "https://www.twitter.com/login"
 tweetdata=[]
 

@@ -6,13 +6,12 @@ from sys import exit
 from selenium import webdriver
 from selenium.common.exceptions import *
 from selenium.webdriver.common.keys import Keys
+import chromedriver_autoinstaller
 import pandas
 import os
 
-#add these two lines for macOs, save the chromedriver in the parent of this file's folder, if the folder is on desktop put chromedriver on the desktop:
-#DRIVER_PATH = os.path.abspath('..')+'/chromedriver'
-#driver = webdriver.Chrome(DRIVER_PATH)
 
+chromedriver_autoinstaller.install()
 base_url= "https://www.twitter.com/login"
 tweetdata=[]
 

@@ -48,7 +48,7 @@ def transform_tweet(card):
 
 #main
 def extract(email, password, path_var):
-    DRIVER_PATH = os.path.abspath(path_var)+'/chromedriver'
+    DRIVER_PATH = os.path.abspath('..')+'/chromedriver'
     driver = webdriver.Chrome(DRIVER_PATH)
     driver.get(base_url)
     driver.implicitly_wait(5)

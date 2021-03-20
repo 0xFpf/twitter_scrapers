@@ -32,8 +32,14 @@ def transform_tweet(card):
         date     = card.find_element_by_xpath('.//time').get_attribute('datetime')
     except NoSuchElementException:
         return
-    comment      = card.find_element_by_xpath('.//div[2]/div[2]/div[1]').text
-    in_reply_of  = card.find_element_by_xpath('.//div[2]/div[2]/div[2]').text
+    try:
+        comment      = card.find_element_by_xpath('.//div[2]/div[2]/div[1]').text
+    except NoSuchElementException:
+        return
+    try:
+        in_reply_of  = card.find_element_by_xpath('.//div[2]/div[2]/div[2]').text
+    except NoSuchElementException:
+        return
     tweetcontent = comment+''+in_reply_of 
 
     tweet = (username, handle, link, date, tweetcontent)
